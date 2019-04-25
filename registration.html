@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/registrationcss.css">
+</head>
+<body >
+	<div class="container"><br>
+		<h1 class="text-success text-left" f>User Registretation form</h1><br>
+		<div class="col-lg-8 m-auto d-block">
+		<form action="#" onsubmit="return validation() " class="bg-light">
+
+			<div class="form-group">
+				<label> Full Name :</label>
+				<input type="text" name="name" class="form-control " id="user" placeholder="Enter Your name Here" required>
+			</div>
+
+			<div class="form-group">
+				<label>User Name :</label>
+				<input type="text" name="username" class="form-control" id="username" placeholder="Enter Your  Username Here" required>
+				<span id = "username1" class="text.danger font weaight bold "></span>
+			</div>
+			<div class="form-group">
+				<label>Email :</label>
+				<input type="text" name="email" class="form-control" id="email" placeholder="Enter Your Email Here" required>
+				<span id = "email1" class="text.danger font weaight bold "></span>
+			</div>
+			<div class="form-group">
+				<label>Mobile No :</label>
+				<input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter Your phone Here" required>
+				<span id = "mobile1" class="text.danger font weaight bold "></span>
+			</div>
+			<div class="form-group">
+				<label>Password :</label>
+				<input type="text" name="password" class="form-control" id="password" placeholder="Enter Your Password Here" required>
+				<span id = "password1" class="text.danger font weaight bold "></span>
+			</div>
+			<div class="form-group">
+				<label>Conform Password :</label>
+				<input type="text" name="confpassword" class="form-control" id="confpassword" placeholder="Conform Password" required>
+				<span id = "confpassword1" class="text.danger font weaight bold "></span>
+			</div>
+			<div class="form-group">
+				<label>Address :</label><br>
+				<!-- <input type="textarea" name="add" class="form-control" id="add"> -->
+				<textarea rows="4" cols="50" placeholder="Enter Your Full Address With pin Code Here" required></textarea>
+				<span id = "user" class="text.danger font weaight bold "></span>
+			</div>
+
+			<input type="submit" name="Submit" value="submit" class="btn btn-success">
+		</form>
+	</div>
+</div>
+<!-- All Validation Code Starts here -->
+<script type="text/javascript">
+	function validation(){
+		var user = document.getElementById('username').value;
+		var email= document.getElementById('email').value;
+		var mobile= document.getElementById('mobile').value;
+		var pass = document.getElementById('password').value;
+		var cpass = document.getElementById('confpassword').value;
+
+
+		if (user == "") {
+			document.getElementById('username1').innerHTML = "Please Enter the Valid User Name Field ";
+			return false;
+		}
+		if( (user.length <=2) || (user.length>=20) ){
+			document.getElementById('username1').innerHTML = "User length must be between 2 and 20 ";
+			return false;
+		}
+		if(!isNaN(user)){
+			document.getElementById('username1').innerHTML = "Only Characters are allowed ";
+			return false;
+		}
+		// User Validation Ends here
+
+		if (email == "") {
+			document.getElementById('email1').innerHTML = "Please Enter the Valid Email Field ";
+			return false;
+		}
+		if (email.indexof('@') <= 0) {
+			document.getElementById('email1').innerHTML = "Invalid Email Please Enter valid Email ";
+			return false;
+		
+		}
+		if ((email.charAt(email.length-4)!= '.') && (email.charAt(email.length-3)!= '.')) {
+			document.getElementById('email1').innerHTML = "Invalid Email . position recheck ";
+
+		}
+		// Email Validation Ends Here
+
+
+		if (mobile == "") {
+			document.getElementById('mobile1').innerHTML = "Please Enter the Valid  Mobile NumberField ";
+			return false;
+		}
+		if (isNaN(mobile)) {
+			document.getElementById('mobile1').innerHTML = "Please Enter the valid Digits Only ";
+			return false;
+	
+		}
+		if (mobile.length != 10) {
+			document.getElementById('mobile1').innerHTML = "It Must be 10 Digits ";
+			return false;
+	
+		}
+		// Mobile number Validation check End
+		if (pass == "") {
+			document.getElementById('password1').innerHTML = "Please Enter the Password Field ";
+			return false;
+		}
+		if ((pass.length <=5) || (pass.length>=20)){
+			document.getElementById('password11').innerHTML = "Password must be between 2 and 20 ";
+			return false;}
+		if (pass != cpass) {
+			document.getElementById('confpassword1').innerHTML = "Password is not matching ";
+			return false;
+		}
+		// Password Validation Check Ends Here
+		if (cpass == "") {
+			document.getElementById('confpassword1').innerHTML = "Password is not matching please enter again ";
+			return false;
+		}
+		// Conform PasswordValidation ends here
+	}
+</script>
+
+</body>
+</html>
